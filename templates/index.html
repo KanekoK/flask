@@ -8,23 +8,12 @@
   <script src="{{url_for('static', filename='js/index.js')}}"></script>
 </head>
 <body>
-  <p>{{ s }}</p>
-  <hr>
+    <form action="/test" method="get">
+      <button name="get_value" value="from get">get submit</button>
+    </form>
 
-  <ul>
-  {% for x in lis %}
-    <li>{{ x }}</li>
-  {% endfor %}
-  </ul>
-  <hr>
-
-  <p>{{ "name: %s age: %s" % (dic["name"], dic["age"]) }}</p>
-  <hr>
-
-  {% if bl %}
-    <p>True</p>
-  {% else %}
-    <p>False</p>
-  {% endif %}
+    <form action="/test" method="post">
+      <button name="post_value" value="from post">post submit</button>
+    </form>
 </body>
 </html>

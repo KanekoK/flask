@@ -1,16 +1,19 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
+    return render_template('index.html')
 
-    s = "abc"
-    lis = ["a1", "a2", "a3"]
-    dic = {"name":"John", "age":24}
-    bl = True
+@app.route('/test', methods=['GET', 'POST'])
+def test():
+    if request.method == 'GET':
+        res = request.args.get('get_value')
+    elif request.method == 'POST':
+        res = request.form['post_value']
 
-    return render_template('index.html', s=s, lis=lis, dic=dic, bl=bl)
+    return res
 
 if __name__ == '__main__':
     app.debug = True
